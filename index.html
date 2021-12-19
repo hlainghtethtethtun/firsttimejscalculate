@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practical Example</title>
+    <style type="text/css">
+        #result{
+            display: inline-block;
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>BMI Calculate</h1>
+    <input type="text" id="name" placeholder="Enter Your Name">
+    <br/><br/>
+
+    <input type="number" id="feet" placeholder="Feet">
+    <input type="number" id="inches" placeholder="inches">
+    <input type="number" id="pound" placeholder="Pound(lb)">
+
+    <br/><br/>
+
+    <span>BMI Result : </span>
+    <span  id="result"></span>
+    <input type="submit" onclick="calcBMI()" value="Calculate">
+
+    <br/><br/>
+
+    <input type="submit" onclick="storeList()" value="Store">
+    <input type="submit" onclick="clearList()" value="Clear">
+
+    <ul id="ulist">
+
+    </ul>
+<!-- ///////////////////////////////////////////////////// -->
+
+    <script type="text/javascript">
+        let name = document.getElementById("name");
+        let feet = document.getElementById("feet");
+        let inches = document.getElementById("inches");
+        let weight = document.getElementById("pound");
+        let result = document.getElementById("result");
+
+        let ulist = document.getElementById("ulist");
+
+        function calcBMI(){
+            if(feet.value == 0 || pound.value == 0){
+                alert("Please Fill Your Number");
+            }else{
+                let ans = function(){
+                let height = (feet.value*12);
+                let calAns = (weight.value / (height**2)) * 703;
+                result.innerText = calAns.toFixed(1);
+
+                return ans;
+            }
+
+                if (inches == 0){
+                
+                    ans(); //၂ခါပြန်မ‌ေရးချင်လို့ ansကို function အနေနဲ့ အပြင်ထုတ်ထားတာ
+
+                }else{
+
+                    height = (feet.value*12)+Number(inches.value);
+                    ans();
+
+                }
+            }
+        }
+
+        function storeList(){
+            if(name.value == ''){
+                alert("Fill Your Name");
+            }else if(feet.value == 0 || pound.value == 0){
+                alert("Please Fill Your Number");
+            }else if(result.innerText == ''){
+                alert("Press Calculate Button");
+            }
+            else{
+                ulist.innerHTML = `<li>${name.value} - ${result.innerText}</li>`;
+                
+            }
+        }
+
+        function clearList(){
+            name.value = '';
+            feet.value = '';
+            inches.value = '';
+            pound.value = '';
+            result.innerHTML = '';
+        }
+
+    </script>
+</body>
+</html>
